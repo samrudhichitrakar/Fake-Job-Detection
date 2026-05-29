@@ -1,0 +1,258 @@
+================================================================================
+                    PROJECT STARTUP FLOWCHART
+================================================================================
+
+START
+  |
+  v
+[Check Python Version]
+  |
+  +--> Python 3.13? --> [Install Python 3.11] --> Continue
+  |
+  +--> Python 3.9-3.12? --> Continue
+  |
+  v
+[Setup Database]
+  |
+  +--> MySQL Running? --> No --> [Start MySQL] --> Continue
+  |                   |
+  |                   +--> Yes --> Continue
+  |
+  v
+[Create Database]
+  |
+  +--> Run: CREATE DATABASE fake_job_detection;
+  +--> Run: SOURCE database/schema.sql;
+  |
+  v
+[Setup Backend]
+  |
+  +--> Create venv: py -3.11 -m venv venv
+  +--> Activate: venv\Scripts\activate
+  +--> Install: pip install -r requirements.txt
+  +--> Configure: Edit .env file
+  +--> Download NLTK: python -c "import nltk; nltk.download(...)"
+  +--> Generate Data: python generate_sample_dataset.py
+  +--> Train Model: python train_model.py (5-10 min)
+  |
+  v
+[Setup Frontend]
+  |
+  +--> Install: npm install (2-3 min)
+  |
+  v
+[Start Backend Server]
+  |
+  +--> Terminal 1: uvicorn app.main:app --reload
+  +--> Wait for: "Uvicorn running on http://127.0.0.1:8000"
+  |
+  v
+[Start Frontend Server]
+  |
+  +--> Terminal 2: npm start
+  +--> Browser opens: http://localhost:3000
+  |
+  v
+[Test System]
+  |
+  +--> Test Text Analysis
+  +--> Test Image Upload
+  +--> Check API Docs
+  |
+  v
+[SUCCESS! System Running]
+  |
+  +--> Frontend: http://localhost:3000
+  +--> Backend: http://localhost:8000
+  +--> API Docs: http://localhost:8000/docs
+  |
+  v
+[Use Application]
+
+
+================================================================================
+                    FOLDER STRUCTURE
+================================================================================
+
+D:\MINI Project 2.0\Job Detection\
+│
+├── backend/                    <-- Backend code
+│   ├── app/
+│   │   ├── database/
+│   │   ├── services/
+│   │   └── main.py            <-- Main API file
+│   ├── ml_models/             <-- Trained models (created after training)
+│   ├── venv/                  <-- Virtual environment (created by you)
+│   ├── train_model.py         <-- Train the model
+│   ├── requirements.txt       <-- Python dependencies
+│   └── .env                   <-- Database config (create from .env.example)
+│
+├── frontend/                   <-- Frontend code
+│   ├── src/
+│   │   ├── components/
+│   │   ├── services/
+│   │   └── App.js
+│   ├── node_modules/          <-- Node dependencies (created by npm install)
+│   └── package.json
+│
+├── database/
+│   └── schema.sql             <-- Database structure
+│
+└── Documentation files (.md)
+
+
+================================================================================
+                    TERMINAL WINDOWS NEEDED
+================================================================================
+
+TERMINAL 1 (Backend):
+┌─────────────────────────────────────────────────────────────┐
+│ D:\MINI Project 2.0\Job Detection\backend>                  │
+│ (venv) D:\...\backend> uvicorn app.main:app --reload        │
+│                                                              │
+│ INFO:     Uvicorn running on http://127.0.0.1:8000          │
+│ INFO:     Application startup complete.                     │
+│                                                              │
+│ [Keep this window open]                                     │
+└─────────────────────────────────────────────────────────────┘
+
+TERMINAL 2 (Frontend):
+┌─────────────────────────────────────────────────────────────┐
+│ D:\MINI Project 2.0\Job Detection\frontend>                 │
+│ D:\...\frontend> npm start                                  │
+│                                                              │
+│ Compiled successfully!                                       │
+│ Local: http://localhost:3000                                │
+│                                                              │
+│ [Keep this window open]                                     │
+└─────────────────────────────────────────────────────────────┘
+
+
+================================================================================
+                    SYSTEM ARCHITECTURE
+================================================================================
+
+┌─────────────────┐
+│   Web Browser   │  <-- You interact here
+│ localhost:3000  │
+└────────┬────────┘
+         │ HTTP Requests
+         v
+┌─────────────────┐
+│  React Frontend │  <-- User Interface
+│   (Port 3000)   │
+└────────┬────────┘
+         │ API Calls
+         v
+┌─────────────────┐
+│  FastAPI Backend│  <-- REST API
+│   (Port 8000)   │
+└────────┬────────┘
+         │
+    ┌────┴────┬──────────┬─────────┐
+    v         v          v         v
+┌────────┐ ┌─────┐  ┌───────┐ ┌────────┐
+│ BiLSTM │ │ NLP │  │  OCR  │ │ MySQL  │
+│ Model  │ │     │  │       │ │   DB   │
+└────────┘ └─────┘  └───────┘ └────────┘
+
+
+================================================================================
+                    DATA FLOW
+================================================================================
+
+User Input (Job Text/Image)
+         |
+         v
+    Frontend (React)
+         |
+         v
+    API Request (Axios)
+         |
+         v
+    Backend (FastAPI)
+         |
+         v
+    Text Preprocessing (NLP)
+         |
+         v
+    Model Prediction (BiLSTM)
+         |
+         v
+    Save to Database (MySQL)
+         |
+         v
+    Return Result (JSON)
+         |
+         v
+    Display to User (React)
+
+
+================================================================================
+                    PORTS USED
+================================================================================
+
+Port 3000  -->  Frontend (React Development Server)
+Port 8000  -->  Backend (FastAPI/Uvicorn)
+Port 3306  -->  MySQL Database
+
+
+================================================================================
+                    FILES TO EDIT
+================================================================================
+
+Configuration:
+  backend/.env              <-- Database credentials
+
+Code (if needed):
+  backend/app/main.py       <-- API endpoints
+  frontend/src/App.js       <-- Frontend main component
+
+
+================================================================================
+                    IMPORTANT COMMANDS
+================================================================================
+
+Check Python Version:
+  python --version
+  py -3.11 --version
+
+Activate Virtual Environment:
+  backend\venv\Scripts\activate
+
+Start Backend:
+  uvicorn app.main:app --reload
+
+Start Frontend:
+  npm start
+
+Train Model:
+  python train_model.py
+
+Test API:
+  python test_api.py
+
+
+================================================================================
+                    SUCCESS INDICATORS
+================================================================================
+
+✓ Backend Running:
+  - Terminal shows "Uvicorn running on http://127.0.0.1:8000"
+  - http://localhost:8000/health returns {"status": "healthy"}
+
+✓ Frontend Running:
+  - Terminal shows "Compiled successfully!"
+  - Browser opens to http://localhost:3000
+  - Homepage displays correctly
+
+✓ Database Connected:
+  - No connection errors in backend terminal
+  - Can see predictions in MySQL
+
+✓ Model Loaded:
+  - No "model not found" errors
+  - Predictions work correctly
+
+
+================================================================================

@@ -1,0 +1,205 @@
+================================================================================
+                    PUSH TO GITHUB - QUICK GUIDE
+================================================================================
+
+STEP 1: CREATE GITHUB REPOSITORY
+================================================================================
+
+1. Go to: https://github.com
+2. Click "+" (top right) → "New repository"
+3. Repository name: fake-job-detection
+4. Description: AI-powered Fake Job Detection System
+5. Choose: Public or Private
+6. DO NOT check "Initialize with README"
+7. Click "Create repository"
+
+Copy the repository URL (looks like):
+https://github.com/YOUR_USERNAME/fake-job-detection.git
+
+
+STEP 2: OPEN COMMAND PROMPT
+================================================================================
+
+cd "D:\MINI Project 2.0\Job Detection"
+
+
+STEP 3: ADD ALL FILES
+================================================================================
+
+git add .
+
+
+STEP 4: COMMIT FILES
+================================================================================
+
+git commit -m "Initial commit: Complete Fake Job Detection System with Deep Learning"
+
+
+STEP 5: ADD REMOTE REPOSITORY
+================================================================================
+
+git remote add origin https://github.com/YOUR_USERNAME/fake-job-detection.git
+
+(Replace YOUR_USERNAME with your actual GitHub username)
+
+
+STEP 6: RENAME BRANCH TO MAIN
+================================================================================
+
+git branch -M main
+
+
+STEP 7: PUSH TO GITHUB
+================================================================================
+
+git push -u origin main
+
+When prompted:
+- Username: Your GitHub username
+- Password: Use Personal Access Token (see below)
+
+
+STEP 8: CREATE PERSONAL ACCESS TOKEN (If needed)
+================================================================================
+
+1. Go to: https://github.com/settings/tokens
+2. Click "Generate new token (classic)"
+3. Name: "Fake Job Detection Project"
+4. Check: "repo" (full control of private repositories)
+5. Click "Generate token"
+6. COPY THE TOKEN (you won't see it again!)
+7. Use this token as password when pushing
+
+
+================================================================================
+                    ALTERNATIVE: USE THE SCRIPT
+================================================================================
+
+Just double-click: PUSH_TO_GITHUB.bat
+
+It will guide you through all steps automatically!
+
+
+================================================================================
+                    VERIFY ON GITHUB
+================================================================================
+
+1. Go to your repository URL
+2. You should see all your files
+3. README.md should display nicely
+4. Check that sensitive files are NOT there:
+   - No venv/ folder
+   - No node_modules/ folder
+   - No .env file
+   - No model files (*.h5, *.pkl) - these are too large
+
+
+================================================================================
+                    FUTURE UPDATES
+================================================================================
+
+After making changes to your code:
+
+git add .
+git commit -m "Description of changes"
+git push
+
+
+================================================================================
+                    WHAT GETS UPLOADED
+================================================================================
+
+✓ All source code (.py, .js files)
+✓ Documentation (.md files)
+✓ Configuration files (package.json, requirements.txt)
+✓ Database schema (.sql)
+✓ Scripts (.bat files)
+
+✗ Virtual environment (venv/)
+✗ Node modules (node_modules/)
+✗ Model files (*.h5, *.pkl) - too large
+✗ Environment variables (.env)
+✗ Uploaded images (uploads/)
+
+
+================================================================================
+                    TROUBLESHOOTING
+================================================================================
+
+Error: "remote origin already exists"
+Solution:
+  git remote remove origin
+  git remote add origin YOUR_REPO_URL
+
+Error: "failed to push"
+Solution:
+  git pull origin main --rebase
+  git push origin main
+
+Error: "Permission denied"
+Solution:
+  - Use Personal Access Token instead of password
+  - Make sure token has "repo" permissions
+
+
+================================================================================
+                    REPOSITORY DESCRIPTION
+================================================================================
+
+Use this for your GitHub repository description:
+
+"AI-powered Fake Job Detection System using Deep Learning (BiLSTM), NLP, 
+and Computer Vision. Built with Python FastAPI backend, React.js frontend, 
+and MySQL database. Achieves 100% accuracy on test data. Final year 
+engineering project."
+
+
+================================================================================
+                    REPOSITORY TOPICS (Tags)
+================================================================================
+
+Add these topics to your GitHub repository:
+
+machine-learning
+deep-learning
+nlp
+computer-vision
+fastapi
+react
+tensorflow
+keras
+python
+javascript
+fake-job-detection
+fraud-detection
+bilstm
+ocr
+final-year-project
+
+
+================================================================================
+                    README BADGES
+================================================================================
+
+Add these to the top of your README.md:
+
+![Python](https://img.shields.io/badge/Python-3.11-blue)
+![React](https://img.shields.io/badge/React-18.2-blue)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.20-orange)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.104-green)
+![Accuracy](https://img.shields.io/badge/Accuracy-100%25-success)
+
+
+================================================================================
+                    DONE!
+================================================================================
+
+Your project is now on GitHub and ready to share!
+
+Repository URL format:
+https://github.com/YOUR_USERNAME/fake-job-detection
+
+Share this link in your project report and resume!
+
+
+================================================================================
