@@ -230,10 +230,6 @@ See [SETUP_GUIDE.md](SETUP_GUIDE.md) for more troubleshooting.
 
 This project is for educational purposes (Final Year Engineering Project).
 
-## 👥 Contributors
-
-- [Your Name] - Developer
-- [Guide Name] - Project Guide
 
 ## 📧 Contact
 
